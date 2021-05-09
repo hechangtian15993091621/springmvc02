@@ -17,8 +17,6 @@ public class TestImplTest {
         test.a();
         test.b();
         test.b();
-        test.b();
-        test.b();
     }
 
     @Test
