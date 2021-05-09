@@ -15,6 +15,7 @@ public class TestImplTest {
     public void a() {
         TestImpl test = new TestImpl();
         test.a();
+        test.b();
     }
 
     @Test
