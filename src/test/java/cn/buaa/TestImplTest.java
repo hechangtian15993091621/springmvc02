@@ -13,7 +13,8 @@ public class TestImplTest {
 
     @Test
     public void a() {
-
+        TestImpl test = new TestImpl();
+        test.a();
     }
 
     @Test
