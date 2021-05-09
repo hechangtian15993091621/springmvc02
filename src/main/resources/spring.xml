@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="cn.buaa"></context:component-scan>
+
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+<!--        <property name="converters">-->
+<!--            <set>-->
+<!--                <bean class="cn.buaa.beans.MyDateTimeConverter"></bean>-->
+<!--            </set>-->
+<!--        </property>-->
+    </bean>
+
+    <!--配置基于CommonsMultipartResolver的文件上传解析器-->
+    <!--id 一定使用multipartResolver，有人已经踩过坑了-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!--最大文件上传字节数，以字节为单位-->
+        <property name="maxUploadSize" value="#{1024*1024*2}"></property>
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="cn.buaa.interceptors.MyInterceptor"></bean>
+    </mvc:interceptors>
+</beans>
