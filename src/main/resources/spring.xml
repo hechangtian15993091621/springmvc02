@@ -25,7 +25,7 @@
         <property name="maxUploadSize" value="#{1024*1024*2}"></property>
     </bean>
 
-    <mvc:interceptors>
-        <bean class="cn.buaa.interceptors.MyInterceptor"></bean>
-    </mvc:interceptors>
+<!--    <mvc:interceptors>-->
+<!--        <bean class="cn.buaa.interceptors.LoginInterceptor"></bean>-->
+<!--    </mvc:interceptors>-->
 </beans>

@@ -1,6 +1,7 @@
 package cn.buaa;
 
 import org.junit.Test;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import static org.junit.Assert.*;
 

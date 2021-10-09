@@ -7,16 +7,18 @@ package cn.buaa;
  **/
 public class TestImpl implements Test {
 
-    private final MyDelegate myDelegate = new MyDelegate();
-
+    @Override
     public void a() {
-        myDelegate.a();
+
     }
 
+    @Override
     public void b() {
-        myDelegate.b();
+
     }
 
+    @Override
     public void c() {
+
     }
 }

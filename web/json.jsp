@@ -61,8 +61,8 @@
     </script>
 </head>
 <body>
-<input type="submit" value="提交单个值" id="btn01">
-<input type="submit" value="提交一个对象" id="btn02">
-<input type="submit" value="提交一个List" id="btn03">
+<input type="button" value="提交单个值" id="btn01">
+<input type="button" value="提交一个对象" id="btn02">
+<input type="button" value="提交一个List" id="btn03">
 </body>
 </html>

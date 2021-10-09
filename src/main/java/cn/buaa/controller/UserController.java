@@ -1,6 +1,8 @@
 package cn.buaa.controller;
 
 import cn.buaa.beans.User;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.*;
 import java.net.URLEncoder;
@@ -30,9 +33,20 @@ import java.util.Map;
 @Controller
 public class UserController {
 
+    @GetMapping("/login")
+    public String login() {
+        return "/login.jsp";
+    }
+
+    @PostMapping("/login")
+    public String login(HttpSession httpSession) {
+        httpSession.setAttribute("username", "hct");
+        return "/admin.jsp";
+    }
+
     @ResponseBody
     @RequestMapping("/interceptor")
-    public String interceptor(String name){
+    public String interceptor(String name) {
         System.out.println(name);
         System.out.println("方法正在执行中...");
         return "123";
@@ -43,6 +57,24 @@ public class UserController {
         System.out.println(username);
         System.out.println(psw);
         return "/index.jsp";
+    }
+
+//    @ResponseBody
+//    @RequestMapping(value = "geth")
+//    public String test(HttpSession httpSession) {
+//        return "geth";
+//    }
+
+    @ResponseBody
+    @RequestMapping(value = "geth?")
+    public String test01(HttpSession httpSession) {
+        return "get?";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "geth*")
+    public String test001(HttpSession httpSession) {
+        return "geth*";
     }
 
     @PostMapping("/hello")
@@ -77,6 +109,13 @@ public class UserController {
     public User json01(@RequestBody User user2) {
         System.out.println(user2);
         return user2;
+    }
+
+    @PostMapping("/json11")
+    @ResponseBody
+    public Integer json11(@RequestBody Integer id) {
+        System.out.println(id);
+        return id;
     }
 
     @PostMapping("/json02")
@@ -126,14 +165,14 @@ public class UserController {
             multipartFile.transferTo(file);
         }
         long end = System.currentTimeMillis();
-        System.out.println("单线程文件上传"+(end - start));
+        System.out.println("单线程文件上传" + (end - start));
         return "/success.jsp";
     }
 
 
     /**
-     *
      * 多线程上传文件
+     *
      * @param desc
      * @param myFile
      * @return
@@ -158,7 +197,7 @@ public class UserController {
             thread.join();
         }
         long end = System.currentTimeMillis();
-        System.out.println("多线程文件上传"+(end - start));
+        System.out.println("多线程文件上传" + (end - start));
         return "/success.jsp";
     }
 
