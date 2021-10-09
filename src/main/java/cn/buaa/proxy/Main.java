@@ -15,9 +15,9 @@ public class Main {
 		UserServiceInterface userServiceInterface = (UserServiceInterface) Proxy.newProxyInstance(Main.class.getClassLoader(), new Class[]{UserServiceInterface.class}, new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				System.out.println("before1");
+				System.out.println("before");
 				Object o = method.invoke(userService,args);
-				System.out.println("after1");
+				System.out.println("after");
 				return o;
 			}
 		});
